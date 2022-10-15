@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wee4_task01</title>
+  <style>
+    .head {
+      text-align: center;
+      color: #ffffff;
+      background-color: #1F2839;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 0px;
+    }
+
+    .details {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      line-height: 150%;
+    }
+
+    .button {
+      margin: 5px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="details">
+    <div class="head">歡迎光臨，請輸入帳號密碼</div>
+    <h3>登入系統</h3>
+    <form action="/signin" method="POST">
+      帳號 <input type="text" name="accountName" placeholder="test" />
+        <br>
+        密碼 <input type="password" name="password" placeholder="****" style="border-width:2px" />
+        <br>
+        <button class="button">登入</button>
+    </form>
+  </div>
+</body>
+
+</html>
