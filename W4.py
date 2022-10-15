@@ -19,12 +19,14 @@ IS_LOGIN = "isLogin..."
 
 @app.route("/")
 def index():
+    if session.get(IS_LOGIN, None):  # 沒有登入→ None; 等等設定:登入→ True; 登出→ False
+        return redirect("/member")
     return render_template("W4.html")
 
 
 @app.route("/member")
 def index_member():
-     if session.get(IS_LOGIN, None):  # 沒有登入→ None; 等等設定:登入→ True; 登出→ False
+    if session[IS_LOGIN] is False:
         return redirect("/")
     else:
         return render_template("member.html")
