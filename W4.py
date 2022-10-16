@@ -35,9 +35,10 @@ def signout():
     return redirect("/")
 
 
-@app.route("/signInFailure")
-def index_signInFailure():
-    return render_template("signInFailure.html")
+@app.route("/error")
+def index_error():
+    message = request.args.get("message")
+    return render_template("signInFailure.html", reason=message)
 
 
 @app.route("/signin", methods=["POST"])
@@ -45,12 +46,12 @@ def signin():
     accountName = request.form["accountName"]
     password = request.form["password"]
     if (accountName == "" or password == ""):
-        return render_template("signInFailure.html", reason="請輸入帳號、密碼")
+        return redirect("/error?message=請輸入帳號、密碼")
     elif (accountName == "test" and password == "test"):
         session[IS_LOGIN] = True  # 設定登入成功為 True
         return redirect("/member")
     elif (accountName != "test" or password != "test"):
-        return render_template("signInFailure.html", reason="帳號、或密碼輸入錯誤")
+        return redirect("/error?message=帳號、或密碼輸入錯誤")
 
 
 app.run(port=3000)
